@@ -1,0 +1,35 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Informaci\'on General}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Nombre del Proyecto}{5}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Beneficiario}{5}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {1.1.2}Nombre de la empresa desarrolladora}{5}{subsection.1.1.2}
+\contentsline {section}{\numberline {1.2}Especificaci\'on de Requerimientos de Software}{5}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Introducci\'on}{5}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Antecedentes}{5}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Prop\'osito}{5}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Alcance}{5}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.5}Definiciones, Acr\'onimos y Abreviaturas}{5}{subsection.1.2.5}
+\contentsline {chapter}{\numberline {2}Casos de Uso}{7}{chapter.2}
+\contentsline {subsection}{\numberline {2.0.6}Caso de uso Acceder al sistema}{7}{subsection.2.0.6}
+\contentsline {subsection}{\numberline {2.0.7}M\'odulo Usuario}{8}{subsection.2.0.7}
+\contentsline {subsubsection}{A\~nadir Usuario}{8}{section*.2}
+\contentsline {subsubsection}{Editar Usuario}{10}{section*.3}
+\contentsline {subsubsection}{Deshabilitar a un Usuario}{11}{section*.4}
+\contentsline {subsection}{\numberline {2.0.8}M\'odulo Cliente}{12}{subsection.2.0.8}
+\contentsline {subsubsection}{A\~nadir Cliente}{12}{section*.5}
+\contentsline {subsubsection}{Editar Cliente}{13}{section*.6}
+\contentsline {subsubsection}{Generar reporte de Clientes}{14}{section*.7}
+\contentsline {subsection}{\numberline {2.0.9}M\'odulo Productos}{15}{subsection.2.0.9}
+\contentsline {subsubsection}{Agregar Producto}{15}{section*.8}
+\contentsline {subsubsection}{Editar Producto}{18}{section*.9}
+\contentsline {subsubsection}{Modificar Producto}{21}{section*.10}
+\contentsline {subsubsection}{Deshabilitar Producto}{24}{section*.11}
+\contentsline {subsubsection}{Deshabilitar Producto}{25}{section*.12}
+\contentsline {subsubsection}{Cotizar Producto}{26}{section*.13}
+\contentsline {subsubsection}{Venta de producto}{27}{section*.14}
+\contentsline {subsection}{\numberline {2.0.10}Proveedores}{28}{subsection.2.0.10}
+\contentsline {subsubsection}{A\~nadir Proveedor}{28}{section*.15}
+\contentsline {subsubsection}{Modificar Proveedor}{29}{section*.16}
+\contentsline {subsubsection}{Deshabilitar Proveedor}{30}{section*.17}
+\contentsline {subsubsection}{Buscar Proveedor}{31}{section*.18}
+\contentsline {subsubsection}{Buscar Proveedor}{32}{section*.19}

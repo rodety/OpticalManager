@@ -1,0 +1,8 @@
+buscar producto
+faltan las uis de las categorias
+buscar cliente
+falta modiricar el tipo de busqueda
+base de daytos falta modelar la historia clinica del cliente
+retirar caracteristica de medida del la interfaz cliente
+Actualizar documento de requirmiento con los cambios
+cambiar tableWidget por table View en la lsita de productos

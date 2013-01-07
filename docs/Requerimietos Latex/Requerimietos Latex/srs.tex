@@ -1,0 +1,1028 @@
+%% LyX 2.0.0 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[18pt,a3paper,spanish]{book}
+\usepackage[T1]{fontenc} 
+\usepackage[spanish]{babel} 
+
+\usepackage[latin1]{inputenc} 
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nomencl}
+
+\usepackage{longtable} 
+% the following is useful when we have the old nomencl.sty package
+
+\makenomenclature
+\usepackage[unicode=true]
+ {hyperref}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\makeatother
+\usepackage{tabulary}
+\usepackage{anysize}
+\marginsize{3cm}{2.5cm}{1.0cm}{1cm}
+
+\begin{document}
+
+\title{SOFTWARE PARA ADMINISTRACIÓN DE UNA ÓPTICA\\
+Especificación de Requerimientos de Software}
+
+
+\author{Escuela Profesional de Ciencia de la Computación\\
+UNSA}
+
+\date{22 de Diciembre del 2012}
+
+\maketitle
+\pagebreak{}
+\tableofcontents{}
+\pagebreak{}
+
+
+\begin{center}
+\large{HISTORIAL DE REVISIONES}\\
+\vskip 1cm
+\end{center}
+
+\begin{center}
+\begin{tabular}{|p{2.5cm}|p{2.5cm}|p{4cm}|p{5cm}|}
+\hline
+\textbf{Versión} & \textbf{Fecha} & \textbf{Autor} & \textbf{Descripción}\\
+\hline
+1.0&13/09/2012&El grupo&Búsqueda de esquema \\
+\hline
+1.0&14/0912&El grupo&Definición de casos de uso\\
+\hline
+1.0&15/09/12&El grupo&Esquemas de casos de uso\\
+\hline
+2.0&09/10/2012&Rosario Huanca Gonza, Jose Miguel Huaman Cruz Miguel Garnica&Revisión de casos de uso\\
+\hline
+2.0&23/10/2012&Jose Miguel Huaman Cruz&Actualizacion de carátula y mejora de documento en el Caso de uso Usuarios\\
+\hline
+3.0&21/1/2012&Vidal Alvarez Manuel&Cambio de formato\\
+\hline
+4.0&21/1/2012&Milton Condori Fernández&Revisión general y corrección\\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+\chapter{Información General}
+\section{Nombre del Proyecto}
+Software para la administración de una óptica;
+\subsection{Beneficiario}
+Clinica estética Nuñez Villar.
+\subsection{Nombre de la empresa desarrolladora}
+Equipo de programación de Ciencia del la Computación - UNSA.
+
+\section{Especificación de Requerimientos de Software}
+
+\subsection{Introducción}
+
+\subsection{Antecedentes}
+La necesidad de poder administrar con mayor desempeño el negocio de ventas de una óptica, e ingresando al uso de herramientas de uso moderno como  son los sistemas informáticos, para así poder dejar de lado el uso de métodos manuales que no ofrecen dichas características, es por eso que nos enfocamos a este proyecto para solucionar todos estos problemas.
+\subsection{Propósito}
+El presente documento tiene como propósito de mostrar la descripción completa del funcionamiento esperado sobre la administración de óptica, orientada a gestionar la información de los productos y la venta de esto.
+\subsection{Alcance}
+En este documento se plantea las funcionalidades principales que debe cumplir el sistema de software de administración de óptica que en la fase de desarrollo se debe administrar.
+\subsection{Definiciones, Acrónimos y Abreviaturas}
+\begin{enumerate}
+\item Administrador: Persona encargada de administrar el sistema, actualizar inventario, habilitar o deshabilitar usuarios, cualquier otra  actividad en el sistema que solo pueda realizar la persona que administra el sistema.
+\item Colaborador: Persona que trabaja en la óptica, que percibe un salario y se adecúa a las normas de la empresa.
+\item Promociones:  Entiéndase como esto a regalos y/o descuentos ofrecidos por el dueño a productos específicos.
+\item Cotizaciones:  Es una plataforma  que sería igual a decir una supuesta compra con los mismos datos.
+\item Vitrina: Lugar físico donde se ubican los lentes pueden ser de diferentes tamaños y formas.
+\end{enumerate}
+
+
+\chapter{Casos de Uso}
+\subsection{Caso de uso Acceder al sistema}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+\textbf{Nombre} & \textbf{Descripción}\\
+\hline
+Caso de uso&Acceder al sistema\\
+\hline
+Actores&Usuario\\
+\hline
+Descripción&Este caso de uso describe como un Usuario se identifica y autentifica para usar el  sistema.\\
+\hline
+Pre condición&El usuario esta registrado en el sistema\\
+\hline
+Flujo Principal&
+\begin{enumerate}
+\item El Usuario inicia el sistema y se muestra un imagen mientras se cargan los módulos del sistema luego de esto se muestra una ventana de identificación con un campo para ingresar el nombre de usuario y otro campo para ingresar contraseña además un botón de confirmación para iniciar el acceso y otro para cancelar la operación.
+\item El Usuario escribe su nombre de usuario.
+\item El Usuario escribe su contraseña la cual aparecerá como asteriscos.
+\item El Usuario hace clic en el botón Aceptar.
+\item El Sistema verifica la validez en la base de datos del nombre de usuario y la contraseña.
+\item Se abre la ventana principal.
+\end{enumerate} \\
+\hline
+Flujo Alternativo&
+\begin{enumerate}
+\item Después de validar el nombre de usuario y/o contraseña y alguno de éstos sean  incorrectos o estén en blanco, entonces,  el sistema mostrará el siguiente mensaje: Usuario o contraseña incorrectos.
+\item Luego de tres 3 intentos sin éxito en la validación del nombre de usuario y contraseña se mostrará el siguiente  mensaje: Excedió el número de intentos fallidos. Inicio de sesión bloqueado por 20 segundos.
+\item Luego de diez 10 intentos sin éxito en la validación de la contraseña se bloquea el usuario.
+\item El usuario está deshabilitado: el sistema muestra un aviso indicando que el nombre de usuario está deshabilitado.
+\item La contraseña del usuario  deshabilitado debe volver a ser asignada, luego de validar se abre una ventana para que el Usuario indique su nueva contraseña al aceptar se abre la ventana principal.
+\end{enumerate} \\
+\hline
+Post condición & El usuario esta identificado y validado.\\
+\hline
+\end{tabular}
+\end{center}
+
+\pagebreak{}
+
+\subsection{Módulo Usuario}
+\subsubsection{Añadir Usuario}
+\begin{center}
+\begin{longtable}{|p{2.8cm}|p{13cm}|}
+\hline
+\textbf{Nombre} & \textbf{Descripción}\\
+\hline
+\endfirsthead
+Caso de uso & Añadir Usuario\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción & Este caso de uso describe el proceso de añadir un nuevo usuario.\\
+\hline
+Pre condición&
+\begin{itemize}
+\item El sistema inicialmente instalado deberá contener a un usuario administrador con permisos a todo el sistema, con el ?Nombre de Usuario?: admin y con contraseña aleatoria dada por una número de 4 cifras.
+\item Ingresar al módulo Usuario con permisos de administrador.
+\end{itemize} \\
+\hline
+Flujo Principal&
+\begin{enumerate}
+\item  Al ingresar al módulo de usuario se mostrará en el área de trabajo  una Lista de Usuarios, los cuales tendrán los siguientes atributos
+\begin{itemize}
+\item Nombre
+\item Primer Apellido
+\item Segundo Apellido.
+\end{itemize}
+\item En el lado derecho se mostrarán los siguientes botones:
+\begin{itemize}
+\item Nuevo.
+\item Editar.
+\item Deshabilitar.
+\end{itemize}            
+\item  Hacemos clic sobre el botón Nuevo, el cual añadirá nuevos usuarios, y los botones Editar y Deshabilitar estarán desactivados.
+\item Se mostrará un ventana la cual contendrá los siguientes datos:
+\begin{itemize}
+\item Nombres: se mostrarán en un campo de texto
+\item Primer Apellido: se mostrarán en un campo de texto
+\item Segundo Apellido: se mostrarán en un campo de texto
+\item Tipo de documento: se mostrará en un menú desplegable
+\item Número de Documento: será un campo de texto de 8 dígitos
+\item Fecha de Nacimiento: se mostrará en un menú desplegable
+\item Sexo: se mostrará en un menú desplegable
+\item Estado Civil: se mostrará en un menú desplegable
+\item Departamento: se mostrará en un menú desplegable
+\item Provincia: se mostrará en un menú desplegable
+\item Distrito: se mostrará en un menú desplegable
+\item Dirección: se mostrará en un campo de texto
+\item Teléfono: se mostrará en un campo de texto
+\item Celular: se mostrará en un menú desplegable
+\item Observaciones: se mostrará en un menú desplegable.
+\end{itemize}             
+\item En la parte inferior existirán dos botones Aceptar y Cancelar.
+\item Llenar los datos, y hacer clic en Aceptar.
+\end{enumerate} \\
+\hline
+Flujo Alternativo&
+\begin{enumerate}
+\item En caso de que exista otro usuario con ?Nombre de Usuario? deben ser detectados, el sistema deberá agregar  ?numero? ejemplo usuario-1 dependiendo de la cantidad de usuario repetidos.
+\item El sistema deberá validar los campos ingresados.
+\item Si los datos ingresados son incorrectos se mostrará un mensaje de advertencia.
+\end{enumerate} \\
+\hline
+Post condición & Un nuevo usuario será registrado con todos sus datos y serán guardados correctamente en la base de datos.\\
+\hline
+\end{longtable}
+\end{center}
+\pagebreak{}
+
+\subsubsection{Editar Usuario}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Añadir Usuario\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción & En este caso de uso el administrador podrá editar a los usuarios realizando primero una búsqueda o seleccionando un usuario que se mostrará en la Lista de Usuarios.\\
+\hline
+Pre condición & El usuario deber ser el administrador con todos los permisos  del sistema y haber iniciado sesión anteriormente.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item Primero se deberá realizar la búsqueda del usuario  el cual se desea editar, este se dará mediante el nombre de usuario en una barra la cual estará ubicada en la parte superior de la lista de usuarios.
+\item Una vez encontrado el usuario será mostrado en la pantalla y se deberá poder hacer clic  sobre el mismo de tal manera que se generará una ventana en la cual estén todos  los datos del usuario  los cuales se podrán editar y en la parte inferior existirán dos botones de Aceptar y Cancelar.
+\end{enumerate}\\
+Flujo Alternativo & En caso de no encontrar al Usuario  el sistema deberá mostrar un mensaje de advertencia.\\
+\hline
+Post condición & Se podrá editar y realizar los cambios, los cuales serán actualizados en la base de datos.\\
+\hline
+
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+\subsubsection{Deshabilitar a un Usuario}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+
+Nombre & Descripción\\
+\hline
+Caso de uso & Deshabilitar a un Usuario\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción & Este caso de uso describe la deshabilitación de un usuario que por algún motivo dejó de trabajar en la empresa.\\
+\hline
+Pre condición & Debe haber iniciado sesión el administrador e ingresado al módulo de usuarios.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item Primero se deberá realizar la búsqueda del usuario  el cual se desea deshabilitar, este se dará mediante el nombre de usuario  en una barra la cual estará ubicada en la parte superior de la lista de usuarios.
+\item Una vez encontrado se pueda hacer clic en el nombre de manera que la opción deshabilitar que debe estar en la parte derecha  se pueda ver disponible, una vez encontrado con solo hacer clic aparecerá una ventana con el mensaje Está seguro que desea deshabilitar a éste usuario con los botones de Aceptar y Cancelar.
+\end{enumerate}\\
+Flujo Alternativo & En caso de no encontrar al Usuario  el sistema deberá mostrará un mensaje de advertencia.\\
+\hline
+Post condición & Se habrá deshabilitado del sistema al Usuario, no eliminado sino que guardado sus datos en el sistema hasta una próxima reincorporación.\\
+\hline
+
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+\subsection{Módulo Cliente}
+
+\subsubsection{Añadir Cliente}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Deshabilitar a un Usuario\\
+\hline
+Actores & Administrador, cliente\\
+\hline
+Descripci\'on & En una cotización de algún producto se deberá almacenar el cliente en la base de  datos para su posterior uso en la consolidación de la compra del producto.\\
+\hline
+Pre condición & El que realice esta operación debe ser el administrador, el cual deberá haber iniciado sesión anteriormente.\\
+\hline
+Flujo principal & Deberá haber un botón con añadir cliente con la cual aparecerá una ventana en la cual se deberán poder ingresar lo siguiente datos:
+\begin{enumerate}
+\item Nombre: (Obligatorio) Que deberá poder recibir valores alfabéticos.
+\item Primer apellido: (Obligatorio) Que deberá poder recibir valores alfabéticos.
+\item Segundo apellido: Que deberá poder recibir valores alfabéticos.
+\item Tipo de documento: el cual será en un menú desplegable.
+\item El número de documento: (Obligatorio) Que deberá poder recibir valores alfanuméricos.
+\item Departamento (de la dirección): (Obligatorio)
+\item Provincia (de la dirección): Se deberá mostrar una opción desplegable con las provincias del departamento seleccionado anteriormente,  deberá poder cambiar dinámicamente de acuerdo al departamento seleccionado.
+\item Distrito (de la dirección): Se llena manualmente la dirección del distrito, incluidas referencias.
+\item Dirección: En este campo  se especificará  la dirección, también de forma manual.
+\item Sexo: El cual será dado por Hombre y Mujer.
+\item Fecha de Nacimiento: Con el siguiente formato día/mes/año.
+\item Teléfono: El cual debe recibir solo un valor numérico.
+\item Características de medida: (Obligatorio) Valores alfanuméricos.
+\item Código de Venta: Que se expide en la boleta o factura.
+\end{enumerate}\\
+\hline
+Flujo Alternativo & 
+\begin{enumerate}
+\item El sistema deberá reconocer la duplicación de datos o tal vez en caso de el cliente ya exista, deberá una ventana en la cual mostrará el porqué no se pudo encontrar.
+\item El sistema debe permitir agregar datos sólo si cuentan con  información en los campos marcados como Obligatorios
+\end{enumerate} \\
+\hline
+Post condición & La información del cliente será guardado en la base de datos.\\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+\subsubsection{Editar Cliente}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Deshabilitar a un Usuario\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción & Mediante este se podrá realizar una búsqueda de usuario mediante el Documento de Identidad para así poder editar sus datos una vez encontrado.\\
+\hline
+Pre condición & Debe ser el administrador quien realice este proceso y este debe haber iniciado sesión previamente.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item Se tiene que seleccionar un cliente, y el botón de editar se habilitará.
+\item Se podrá  realizar una búsqueda de cliente mediante el documento de identidad, y una vez encontrado se podrá modificar los datos y con él también se deberán apreciar los botones Guardar y Cancelar.
+\item Los datos marcados como Obligatorio son también editables, pero ocasionan una nueva entrada en la base de datos. 
+\end{enumerate} \\
+\hline
+Flujo Alternativo & 
+\begin{enumerate}
+\item Si no se puede encontrar el cliente se deberá mostrar un mensaje de error en el cual invite a reintentar y asegurarse de que introduzcan datos válidos.
+\item No se puede cambiar el documento de identidad.
+\end{enumerate} \\
+\hline
+Post condición & Los nuevos datos de usuario serán correctamente  guardados dentro de la base de datos.\\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+\subsubsection{Generar reporte de Clientes}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Generar reporte de Clientes\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción &  Mediante este caso de uso el administrador podrá obtener un reporte de los cliente mediante un documento (PDF o Texto Plano) generado por el sistema.\\
+\hline
+Pre condición & El usuario debe haber iniciado sesión antes y debe ser el administrador.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item Se debe seleccionar un cliente en la interfaz, se activará un botón rotulado como Generar Reporte de Cliente.
+\item Una Ventana de confirmación aparecerá, para confirmar el formato del reporte, y si se desea imprimir o guardar en el disco duro, además de los botones de Aceptar y Cancelar. 
+\item En caso de decidir guardar el archivo, se muestra una ventana emergente que confirma el éxito de la operación, además de la ruta en la cual se almacena el archivo.
+\item En caso de escoger impresión, se lanza una pantalla emergente que indica el éxito de la operación, seguido del mensaje de que el documento está siendo impreso.
+\end{enumerate} \\
+\hline
+Flujo Alternativo & No debería presentarse, pues cada usuario que sea válido debe tener un reporte que ser impreso, de otra manera el botón no será habilitado\\
+\hline
+Post condición & Se produce un reporte del cliente seleccionado, ya sea en disco o en impreso.\\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+\subsection{Módulo Productos}
+\subsubsection{Agregar Producto}
+\begin{center}
+\begin{longtable}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+\endfirsthead
+Caso de uso & Agregar Producto\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción &  Este caso de uso describe todo el proceso de Agregar Productos, acciones que sólo puede ejecutar el Administrador.\\
+\hline
+Pre condición & 
+\begin{enumerate}
+\item Ingreso al sistema.
+\item Ingresar como  administrador del sistema, donde llena los campos requeridos (Nombre de usuario y contraseña).
+\item Ingresar al Módulo de Productos.
+\end{enumerate}\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item Al ingresar al Módulo de Productos se mostrará una ventana como ventana de inicio una tabla donde se encontrarán todos los productos. 
+\item Al ingresar al Módulo de Productos se mostrará una ventana como ventana de inicio una tabla donde se encontrarán todos los productos. 
+\item El administrador pulsa el botón de Nuevo Producto, al hacer clic se mostrará una ventana donde se mostrará lo siguiente:
+\begin{itemize}
+
+
+\item Categoría: la cual está definida en el CU Editar Productos.
+\item Nuevo: Es un Botón en el cual el Administrador al pulsarlo podrá: Agregar Lunas, Monturas, Lentes de Contacto o Accesorios. 
+\item Si el administrador selecciona Montura se deberá mostrar las características de Montura las cuales son:
+\item Código
+\item Color
+\item Marca
+\item Forma
+\item Tamaño
+\item Calidad
+\item Stock
+\item Precio
+\end{itemize}
+\item  Si el administrador selecciona Luna se deberá mostrar las características de Lunas las cuales son:
+\begin{itemize}
+\item Calidad
+\item Tipo de Luna
+\item Rango de Medida
+\item Índices
+\item Tratamientos
+\item Stock
+\item Precio
+\end{itemize}
+\item  Si el administrador selecciona Lentes de Contacto se deberá mostrar las características de Lentes de Contacto las cuales son:
+\begin{itemize}
+\item Marca
+\item Tipo de Lente
+\item Potencia
+\item Curva Base
+\item Diámetro
+\item Tinte
+\item Stock
+\item Precio
+\end{itemize}       
+\item El administrador llenará los campos  dependiendo del producto que desea agregar.
+\item  Luego de realizar el llenado respectivo, se mostrará al final del área de trabajo un botón de Agregar, el  administrador pulsa éste botón y se mostrará un mensaje (Su producto fue agregado  con éxito). Si el administrador pulsa el botón de Cancelar, se seguirá mostrando el área de Insertar Producto.
+\end{enumerate} \\
+\hline
+Flujo Alternativo & 
+\begin{enumerate}
+\item  Si el producto ya es existente, el sistema mostrará un mensaje de (?Este producto ya existe?).
+\item  Si los campos ingresados no han sido llenados de la manera correcta, aparecerá un mensaje de error que contendrá (?Llenado de datos incorrectos?).
+\item  Si el administrador pulsa el botón de Agregar, sin haber llenado ningún campo se mostrará un mensaje de advertencia.
+\end{enumerate}\\
+\hline
+Post condición & Se actualiza la base de datos con los datos del producto añadido.\\
+\hline
+\end{longtable}
+\end{center}
+\pagebreak{}
+
+\subsubsection{Editar Producto}
+\begin{center}
+\begin{longtable}{|p{2.8cm}|p{13cm}|}
+\hline
+\endfirsthead
+Nombre & Descripción\\
+\hline
+Caso de uso & Editar  producto\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción &  Este caso de uso describe editar color, forma, calidad, marca y tamaño de los productos.\\
+\hline
+Pre condición & 
+\begin{enumerate}
+\item Ingreso al sistema.
+\item Ingresar como  administrador del sistema, donde llena  los campos requeridos (Nombre de usuario y contraseña).
+\item Ingresar al Módulo de Productos.
+\end{enumerate}\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item  Al  ingresar al Módulo de Productos el administrador pulsa el botón de  Agregar Producto, al hacer clic se mostrará una ventana la cual  mostrará  Agregado de Productos por Categoría, la cual contendrá una lista desplegable con los siguientes campos:
+\begin{itemize}
+\item Montura
+\item Luna
+\item Lentes de Contacto
+\item Accesorio
+\end{itemize}
+\item  Si selecciona la categoría de  Montura, se mostrarán los siguientes datos:
+\begin{itemize}
+
+\item Color (Todos los colores).
+\item Forma del marco
+\item  Rectangular
+\item Cuadrada
+\item Ovalada
+\item Gatita
+\item Aviador
+\item Calidad
+\item Carey
+\item Metal
+\item Aluminio
+\item Titanio.
+\item Marca (Marcas de la BD)
+\item Tamaño
+\item Chico
+\item Medio
+\item Grande
+\end{itemize}
+Color, Forma del marco, Calidad, Marca y Tamaño se mostrarán en un desplegable  con los datos que se han descrito anteriormente,  como primer dato por defecto se mostrará Seleccione, y como primer dato se mostrará Agregar otro, también  los datos presentes están en la Base de Datos.
+\item  Al seleccionar Agregar otro el desplegable se podrá editar, y  al lado de cada categoría se mostrará  Agregar.
+\item Cada categoría tendrá sus respectivos datos, los cuales mostrarán en su campo, en el lado derecho un botón borrar que servirá para eliminar el dato.
+\item Si selecciona la categoría de Lunas se mostrarán los siguientes Calidades datos:
+\begin{enumerate}
+\item CR-39 RS (resinas selection).
+\item CR-39 RTQ (resinas top quality)
+\item RTQF (resinas top quality fabricación)
+\item MP (multifocal progresiva)
+\item CS (cristales standard)
+\item CXLF (cristales X-Lite Fabricación).
+\item TS (trivex stock).
+\item TF (trivex fabricación).
+\item PS (Policarbonato Stock).
+\item PF (Policarbonato fabricación).
+\end{enumerate}
+Cada Calidad tiene un tipo de Luna.
+\begin{enumerate}
+\item Esféricos.
+\item Cilindros.
+\item Combinados
+\item Bifocales FLAT TOP
+\item Bifocales INVISIBLES.
+\item Multifocal Progresivo
+\item Monofocales.
+\end{enumerate}
+Cada Calidad tiene Rango de Medida
+\begin{enumerate}
+\item 65 mm
+\item 55 mm
+\item 70 mm
+\item Alto índice
+\end{enumerate}
+Y cada rango de medida tiene un rango varían de 0 a 30 dependiendo de calidad, Cada calidad tiene un ratamiento.
+\begin{enumerate}
+\item CR 39
+\item DuraQuarz
+\item Antireflex.
+\end{enumerate}
+Calidad, Tipo de Luna, Rango de Medidas, índices y tratamientos (los cuales dependen de las características anteriores, restringiéndose sus respectivos datos ), éstos se mostrarán en un comboBox con sus respectivos datos.
+\item  Como primer dato  por defecto se mostrará   Seleccione y como último dato se mostrará  agregar nuevo, también  los datos presentes están en la Base de Datos.
+\item Al seleccionar agregar nuevo  el desplegable se podrá editar, y  al lado de cada categoría se mostrará  Agregar.
+\item Cada categoría tendrá sus respectivos datos, los cuales mostrarán en su campo, en el lado derecho un botón borrar que servirá para eliminar el dato.
+\item Si selecciona la categoría de Lentes de Contacto  se mostrarán los siguientes datos:
+\begin{enumerate}
+\item	Marca
+\item 	Tipo de Lente
+\item 	Potencia
+\item 	Curva Base
+\item 	Diámetro
+\item 	Tinte
+\end{enumerate}
+
+\item Marca, Tipo de Lente, Potencia, Curva Base, Diámetro y Tinte se mostrarán en una lista desplegable como primer dato por defecto se mostrará: Seleccione, y como último dato se mostrará  agregar nuevo, también  los datos presentes están en la Base de Datos.
+\item Al seleccionar agregar nuevo  el desplegable se podrá editar, y  al lado de cada categoría se mostrará  Agregar.
+\item Cada categoría tendrá sus respectivos datos, los cuales mostrarán en su campo, en el lado derecho un botón borrar que servirá para eliminar el dato.
+\end{enumerate}\\
+\hline
+Flujo Alternativo & 
+\begin{enumerate}
+\item En el caso de Lunas si no existe la característica deseada ya sea Calidad, Tipo de Luna, Rango de Medidas, índices y tratamientos, entonces el precio se mostrará NULL.
+\item Si algún dato fue mal escrito, y Agregado, éste se podrá eliminar a través de la X al lado de cada campo.
+\end{enumerate} \\
+
+\hline
+Post condición & El administrador seleccionará todos los datos para cada categoría, obligatoriamente.\\
+\hline
+\end{longtable}
+\end{center}
+\pagebreak{}
+
+\subsubsection{Modificar Producto}
+\begin{center}
+\begin{longtable}{|p{2.8cm}|p{13cm}|}
+\hline
+\endfirsthead
+Nombre & Descripción\\
+\hline
+Caso de uso & Modificar Producto\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción &  Este caso de uso describe todo el proceso de modificar productos, acciones que solo puede ejecutar el administrador.\\
+\hline
+Pre condición & El usuario debe haber iniciado sesión antes y debe ser el administrador.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item Al ingresar al Módulo de Productos escogeremos la opción de Modificar Producto.
+\item Se actualiza el área de trabajo, donde se mostrará una tabla  que contendrá las siguientes  cabeceras:
+\begin{itemize}
+\item Código: éste será alfanumérico y dependerá del tipo de producto.
+\item Tipo: éste será luna, montura o lente de contacto.
+\item Calidad
+\item Color
+\item Stock
+\item Precio
+\end{itemize}
+
+\item Para cada cabecera se llenarán los datos de todos los productos.
+\item El Administrador selecciona el producto que desea modificar, y presiona el botó Modificar que se encontrará en la parte superior del área de trabajo.
+\item En el área de trabajo se mostrarán los datos del producto que el Administrador ha seleccionado, y se presentarán  siguientes campos: 
+\begin{itemize}
+\item Montura
+\item Tipo: éste será un desplegable, donde se listarán los tipos de montura.
+\item Calidad: éste será un desplegable, donde se listarán las calidades de montura.
+\item Color: éste será un desplegable, donde se listarán los colores de monturas
+\item Código: éste será un desplegable, donde se listarán los códigos de monturas.
+\item Stock (de la montura): éste será alfanumérico.
+\item Precio(de la montura) : será en soles
+\end{itemize}
+\item Para Lunas:
+\begin{itemize}
+\item Luna
+\item Tipo: éste será un desplegable, donde se listarán los tipos de lunas.
+\item  Material: éste será un desplegable, donde se listarán los materiales de las lunas.
+\item  Color: éste será un desplegable, donde se listarán los colores de lunes
+\item  Stock (de las lunas): éste será alfanumérico.
+\item  Precio (de las lunas): será en soles.
+\end{itemize}
+\item Lente de contacto
+ 
+\item El administrador podrá modificar el producto que desea.
+\item Al final del área de trabajo se mostrará un botón de Guardar y  Cancelar, si  el  administrador pulsa el  botón de Guardar se mostrará un mensaje (Su producto fue guardado con éxito.)
+\item Si el administrador pulsa el botón Cancelar, se mostrará un mensaje  el cual contendrá dos tipos de respuesta , SI o NO y el mensaje en sí contendrá lo siguiente (¿Está seguro(a) que no desea guardar éste producto?), si el administrador pulsa SI,  entonces no se guardará ninguna modificación que haya realizado, pero si es NO se mostrará el mismo área de trabajo donde se está realizando la modificación.
+\end{enumerate} \\
+\hline
+Flujo Alternativo & 
+\begin{enumerate}
+\item Si los campos modificados no han sido llenados de la manera correcta, aparecerá un mensaje de error que contendrá (Llenado de datos incorrectos).
+\item Si el administrador pulsa el botón de Guardar, sin haber llenado ningún campo se mostrará un mensaje  (No ha realizado ningún cambio)
+\end{enumerate}\\
+\hline
+Post condición & Se actualiza la base de datos con los datos del producto modificado.\\
+\hline
+\end{longtable}
+\end{center}
+\pagebreak{}
+
+
+
+\pagebreak{}
+
+%\subsection{Diagrama}
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[scale=0.6]{images/DIAGRAMA_GENERAL}
+%\caption{Diagrama y acCaso de Uso}
+%\end{center}
+%\end{figure}
+%\pagebreak{}
+
+
+\subsubsection{Deshabilitar Producto}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Deshabilitar Producto\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción &  Este caso de uso describe todo el proceso de deshabilitar productos, acciones que solo puede ejecutar el administrador.\\
+\hline
+Pre condición & 
+\begin{enumerate}
+\item Ingreso al sistema.
+\item Ingresar  como  administrador del sistema, donde llena  los campos requeridos (Nombre de usuario y contraseña).
+\item Ingresar al Módulo de Productos.
+\end{enumerate} \\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item En el área de trabajo  se seleccionará el producto que se desea deshabilitar, se pulsara en el check box, y se mostrará un mensaje (¿Está seguro(a) que desea deshabilitar éste producto?).
+\item Si la respuesta es SI, el producto a seleccionar será deshabilitado, pero si la respuesta es NO se mostrará la interfaz donde se encuentran los productos.
+\end{enumerate} \\
+\hline
+Flujo Alternativo & Si el producto seleccionado no se marca con un check box, deberá revisar el sistema, por si ha ocurrido algún error.\\
+\hline
+Post condición & Se actualiza la base de datos con los datos del producto modificado.\\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+
+
+\subsubsection{Deshabilitar Producto}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Deshabilitar Producto\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción & Este caso de uso describe todo el proceso de deshabilitar productos, acciones que solo puede ejecutar el administrador.\\
+\hline
+Pre condición & El usuario debe haber iniciado sesión antes y debe ser el administrador.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item En el área de trabajo  se seleccionará el producto que se desea deshabilitar, se pulsara en el check box, y se mostrará un mensaje (¿Está seguro(a) que desea deshabilitar éste producto?).
+\item Si la respuesta es SI, el producto a seleccionar será deshabilitado, pero si la respuesta es NO se mostrará la interfaz donde se encuentran los productos.
+\end{enumerate} \\
+\hline
+Flujo Alternativo & No debería presentarse, pues cada usuario que sea válido debe tener un reporte que ser impreso, de otra manera el botón no será habilitado\\
+\hline
+Post condición & Se actualiza la base de datos con los datos del producto modificado.\\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+
+
+\subsubsection{Cotizar Producto}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Cotizar Producto\\
+\hline
+Actores & Vendedor\\
+\hline
+Descripción &  Este caso de uso describe el proceso de cotización de los productos que el cliente requiera.\\
+\hline
+Pre condición & El usuario debe haber iniciado sesión antes y debe ser el administrador o vendedor.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item El Colaborador ingresa a la sección de Cotización de  productos, en el cual se mostrarán los  siguientes datos según lo que requiera el cliente (no todos los campos serán obligatorios).
+\begin{enumerate}
+\item Montura
+\begin{itemize}
+\item Tipo
+\item Calidad
+\item Color
+\item Código
+\item Precio
+\item Accesorios
+\item obsequios
+\end{itemize}
+\item Lunas:
+\begin{itemize}
+\item Tipo*
+\item Material*
+\item Color
+\item Otros
+\item Precio
+\end{itemize}
+\item Lentes de contacto.
+\begin{itemize}
+\item tipo de Lentes
+\item Obsequios.
+\end{itemize}
+\end{enumerate}
+\item Al Final mostrar el total de la compra en nuevos soles.
+\item El colaborador  llenará los campos dependiendo lo que el Cliente requiera cotizar como por ejemplo, lunas, monturas o Lentes de Contacto, o también realizando una cotización completa de monturas y lunas, dependiendo de las medidas de vista del cliente.
+ 
+\item En la parte inferior existirá un botón de Imprimir, al hacer clic en  éste se  conectará con la ticketera, la cual utilizará un papel  de ticketera y el ticket que se emitirá será de acuerdo a la cantidad de productos vendidos.
+
+\end{enumerate} \\
+\hline
+Flujo Alternativo & 
+\begin{enumerate}
+\item Si el vendedor no ha llenado los campos correctamente, se mostrará un mensaje de (Llene los campos obligatorios *)
+\item Si el vendedor se equivoca en el llenado de los datos en los campos, el ticket emitido será anulado.
+\end{enumerate} \\
+\hline
+Post condición & 
+\begin{itemize}
+\item Se genera la impresión de la cotización en una ticketera de tamaño 10 x 15cm.
+\item Se registra en la base de datos la cotización en una línea de cotización, para poder referenciarla después.
+\end{itemize} \\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+
+\subsubsection{Venta de producto}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Venta de producto\\
+\hline
+Actores & Administrador, Vendedor\\
+\hline
+Descripción &  Este caso de uso describe el proceso de realizar una venta de un producto.\\
+\hline
+Pre condición & El usuario debe haber iniciado sesión antes y debe ser el administrador.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item El Colaborador ingresa a la sección de Ventas, en el cual seleccionara la categoría de productos que desee vender estos son:
+\begin{itemize}
+\item Montura.
+\item Lentes.
+\item Lentes de Contacto.
+\item Accesorios de Lentes.
+\end{itemize}
+\item Luego se mostrará una lista de todos los productos por:
+\begin{itemize}
+\item Código
+\item Marca
+\item Descripción
+\item Stock
+\item Precio
+\end{itemize}
+\item El colaborador podrá realizar una búsqueda del cliente, si éste ya ha realizado una compra o una cotización del producto el cual aparecerá en el área de trabajo.
+\item El colaborador podrá realizar la venta del producto con el llenado de los productos que el cliente requiera monturas o Lentes de Contacto, accesorios de lentes en el caso de Lunas se mostrara una ventana donde el colaborador ingresara las medidas del cliente como son:
+\begin{tabular}{|c | c | c | c | c | c|}
+\hline
+Distancia & Ojos & Esférico & Cilíndrico & Eje & Distancia Pupilar \\
+\hline
+Cerca & Ojo Derecho &&&& \\
+\hline
+Cerca & Ojo Izquierdo &&&& \\
+\hline
+Lejos & Ojo Derecho &&&& \\
+\hline
+Lejos & Ojo Izquierdo &&&& \\
+\hline
+\end{tabular}
+De acuerdo a las medidas el sistema deberá mostrar todas las combinaciones de calidad y el precio.
+\item al final deberá mostrar monto total de la compra.
+\item En la parte inferior existirá un botón de Imprimir, al hacer clic en  éste se imprimirá en la impresora configurada.
+\end{enumerate} \\
+\hline
+Flujo Alternativo & Si el vendedor se equivoca en el llenado de los datos en los campos, el ticket emitido será anulado. En el proceso de anular venta.\\
+\hline
+Post condición & 
+\begin{enumerate}
+\item Se genera la impresión de la cotización en una ticketera de tamaño 10 x 15cm.
+\item Se registra en la base de datos la venta.
+\end{enumerate} \\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+\subsection{Proveedores}
+\subsubsection{Añadir Proveedor}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Añadir Proveedor\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción &  Este caso de uso describe todo el proceso de añadir proveedor , acciones que sólo puede ejecutar el Administrador.\\
+\hline
+Pre condición & El usuario debe haber iniciado sesión antes y debe ser el administrador.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item Una vez ingresado al sistema el usuario como administrador  selecciona la pestaña rotulada con el nombre de ?Proveedores? la cual estará habilitada solo para usuarios con permisos de administrador, en la cual aparecerán las siguientes iconos:
+\item Nuevo, Guardar, Modificar, Eliminar, Imprimir Datos, Busca, Histórico de Compras.
+\item Cuando el Administrador hace un click en la pestaña nuevo deberán habilitarse los campos:
+\item Razón Social, Numero de RUC, Domicilio, Contacto, Teléfono 1,  Número de Cuenta Bancaria, Banco Asociado, Contacto, Email de contacto, Comentario.
+\item También deberá habilitarse el icono Guardar
+\item Una vez concluida la inserción de datos del Proveedor el usuario deberá hacer click en el icono Guardar, El software deberá mostrar un mensaje indicando que los datos se guardaron correctamente.
+\end{enumerate} \\
+\hline
+Flujo Alternativo & 
+\begin{enumerate}
+\item Si el proveedor ya es existente, el sistema mostrará un mensaje   de:?Este proveedor  ya existe?.
+\item Si los campos ingresados no han sido llenados de la manera     correcta, aparecerá un mensaje de error indicando el campo que no es correcto que contendrá (?Llenado de datos incorrectos?).
+\item Si el administrador pulsa el botón de Agregar,  sin haber llenado ningún campo se mostrará un mensaje (?No ha ingresado ningún campo.?)
+\end{enumerate}\\
+\hline
+Post condición & Se actualiza la base de datos con los datos del proveedor añadido.\\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+
+\subsubsection{Modificar Proveedor}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Modificar Proveedor\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción & Este caso de uso describe todo el proceso de modificar productos, acciones que solo puede ejecutar el administrador.\\
+\hline
+Pre condición & El usuario debe haber iniciado sesión antes y debe ser el administrador.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item Cuando el Administrador hace un click en un ítem de proveedores se muestra los datos del proveedor, luego el usuario presiona el  icono Modificarse muestra una ventana con todos los datos ingresados al momento de crearse y se habilitan todos los campos a ser modificados 
+\item Se habilitará el botón Guardar.
+\end{enumerate} \\
+\hline
+Flujo Alternativo & 
+\begin{enumerate}
+\item Si los campos modificados no han sido llenados de la manera correcta, aparecerá un mensaje de error que contendrá (?Llenado de datos incorrectos?).
+\item Si el administrador pulsa el botón de Guardar,  sin haber llenado ningún campo se mostrará un mensaje  (?No ha realizado ningún cambio?)
+\end{enumerate} \\
+\hline
+Post condici\'on & Se actualiza la base de datos con los datos del producto modificado.\\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+\subsubsection{Deshabilitar Proveedor}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Deshabilitar Proveedor\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción & Este caso de uso describe todo el proceso de deshabilitar proveedores, acciones que solo puede ejecutar el administrador.\\
+\hline
+Pre condición & El usuario debe haber iniciado sesión antes y debe ser el administrador.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item 1Cuando el usuario presiona el icono Deshabilitar Proveedor el software muestra un mensaje si está seguro que desea deshabilitar al proveedor ?Nombre de Proveedor? Con las opciones aceptar y cancelar, Si el administrador presiona Aceptar se  procede a deshabilitar al proveedor seleccionado, Si el Usuario Presiona en Cancelar entonces se cierra la ventana y no se deshabilita
+\end{enumerate} \\
+\hline
+Flujo Alternativo &  \\
+
+\hline
+Post condición & Se actualiza la base de datos con los datos del proveedor actualizado.\\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+\subsubsection{Buscar Proveedor}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Deshabilitar Proveedor\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción & Este caso de uso describe el proceso de búsqueda de proveedor.\\
+\hline
+Pre condición & El usuario debe haber iniciado sesión antes y debe ser el administrador.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item La pantalla de búsqueda se mostrará a lado lateral izquierdo en él se mostrará buscar por número de Ruc o por Razón social abajo el botón buscar.
+\item Cuando el Usuario presiona en el botón Buscar entonces se muestra una ventana de búsqueda de proveedor donde muestra la lista de todos los proveedores, además se muestran los campos buscar por Ruc, Buscar Por razón Social y un botón Buscar.
+\item El Usuario puede buscar por ruc el cual es un numero de de 11 dígitos. Este campo no deberá permitir la inserción de letras u otros caracteres, también se verificara que se ingresen los 11 dígitos completos de otro modo el sistema deberá mostrar una mensaje indicando que faltan números.
+\item Luego el usuario podrá presionar el botón buscar el cual mostrara los resultados en caso de no encontrarlo el software no mostrara nada en la lista de proveedores.
+\item El Usuario también puede buscar por nombre de razón social, el usuario puede presionar el botón buscar el cual mostrara los resultados en La lista de Proveedores.
+\item Una vez que el usuario Encuentra al proveedor buscado el usuario puede hacer doble click en el nombre del Proveedor, En ese instante se cierra la ventana de búsqueda y se muestra la  ventana de datos del proveedor.
+\item En caso no se encuentre el Proveedor El Software mostrara todos los campos vacios.
+\end{enumerate} \\
+\hline
+Flujo Alternativo & En caso no se encuentre el Proveedor El Software mostrara todos los campos vacios. \\
+\hline
+Post condición & \\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+
+\subsubsection{Buscar Proveedor}
+\begin{center}
+\begin{tabular}{|p{2.8cm}|p{13cm}|}
+\hline
+Nombre & Descripción\\
+\hline
+Caso de uso & Deshabilitar Proveedor\\
+\hline
+Actores & Administrador\\
+\hline
+Descripción & Este caso de uso describe el proceso de búsqueda de proveedor.\\
+\hline
+Pre condición & El usuario debe haber iniciado sesión antes y debe ser el administrador.\\
+\hline
+Flujo principal & 
+\begin{enumerate}
+\item La pantalla de búsqueda se mostrará a lado lateral izquierdo en él se mostrará buscar por número de Ruc o por Razón social abajo el botón buscar.
+\item Cuando el Usuario presiona en el botón Buscar entonces se muestra una ventana de búsqueda de proveedor donde muestra la lista de todos los proveedores, además se muestran los campos buscar por Ruc, Buscar Por razón Social y un botón Buscar.
+\item El Usuario puede buscar por ruc el cual es un numero de de 11 dígitos. Este campo no deberá permitir la inserción de letras u otros caracteres, también se verificara que se ingresen los 11 dígitos completos de otro modo el sistema deberá mostrar una mensaje indicando que faltan números.
+\item Luego el usuario podrá presionar el botón buscar el cual mostrara los resultados en caso de no encontrarlo el software no mostrara nada en la lista de proveedores.
+\item El Usuario también puede buscar por nombre de razón social, el usuario puede presionar el botón buscar el cual mostrara los resultados en La lista de Proveedores.
+\item Una vez que el usuario Encuentra al proveedor buscado el usuario puede hacer doble click en el nombre del Proveedor, En ese instante se cierra la ventana de búsqueda y se muestra la  ventana de datos del proveedor.
+\item En caso no se encuentre el Proveedor El Software mostrara todos los campos vacios.
+\end{enumerate} \\
+\hline
+Flujo Alternativo & En caso no se encuentre el Proveedor El Software mostrara todos los campos vacios. \\
+\hline
+Post condición & \\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak{}
+
+
+
+
+
+
+
+\end{document}
